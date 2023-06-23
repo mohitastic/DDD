@@ -1,8 +1,8 @@
 package domain.process;
 
 import domain.model.Cart;
+import domain.model.Item;
 import domain.model.Product;
-import domain.model.ProductName;
 
 public class ShoppingService {
 
@@ -12,9 +12,9 @@ public class ShoppingService {
         this.cart = cart;
     }
 
-//    public void add(Product product,int qty) {
-//        cart.addItem(product,qty);
-//    }
+    public void add(Item item) {
+        cart.addItem(item);
+    }
 
     public void remove(Product product) {
         cart.removeItem(product);
