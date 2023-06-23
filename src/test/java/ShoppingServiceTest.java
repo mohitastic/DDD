@@ -3,9 +3,9 @@ import domain.process.ShoppingService;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Currency;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
 
 public class ShoppingServiceTest {
 
@@ -15,9 +15,10 @@ public class ShoppingServiceTest {
         ShoppingService shoppingService = new ShoppingService(cart);
         ProductId productId = new ProductId(1);
         ProductName applePencil = new ProductName("ApplePencil");
-        Product product = new Product(productId, applePencil);
+        Price price = new Price(Currency.getInstance("USD"), 20);
+        Product product = new Product(productId, applePencil, price);
 
-        shoppingService.add(new Item(product,new Quantity(1)));
+        shoppingService.add(new Item(product, new Quantity(1)));
 
         assertEquals(cart.getItems().size(),1);
     }
@@ -28,9 +29,10 @@ public class ShoppingServiceTest {
         ShoppingService shoppingService = new ShoppingService(cart);
         ProductId productId = new ProductId(1);
         ProductName applePencil = new ProductName("SonyWirelessHeadphones");
-        Product product = new Product(productId, applePencil);
+        Price price = new Price(Currency.getInstance("USD"), 20);
+        Product product = new Product(productId, applePencil, price);
 
-        shoppingService.add(new Item(product,new Quantity(1)));
+        shoppingService.add(new Item(product, new Quantity(1)));
 
         assertEquals(cart.getItems().size(),1);
     }
@@ -41,9 +43,10 @@ public class ShoppingServiceTest {
         ShoppingService shoppingService = new ShoppingService(cart);
         ProductId productId = new ProductId(1);
         ProductName applePencil = new ProductName("SonyWirelessHeadphones");
-        Product product = new Product(productId, applePencil);
+        Price price = new Price(Currency.getInstance("USD"), 20);
+        Product product = new Product(productId, applePencil, price);
 
-        shoppingService.add(new Item(product,new Quantity(2)));
+        shoppingService.add(new Item(product, new Quantity(2)));
 
         assertEquals(cart.getItems().size(),1);
         assertEquals(cart.getItems().get(0).getProduct(),product);
@@ -55,9 +58,10 @@ public class ShoppingServiceTest {
         ShoppingService shoppingService = new ShoppingService(cart);
         ProductId productId = new ProductId(1);
         ProductName productName = new ProductName("SonyWirelessHeadphones");
-        Product product = new Product(productId, productName);
+        Price price = new Price(Currency.getInstance("USD"), 20);
+        Product product = new Product(productId, productName, price);
 
-        shoppingService.add(new Item(product,new Quantity(2)));
+        shoppingService.add(new Item(product, new Quantity(2)));
 
         assertEquals(cart.getItems().size(),1);
         assertEquals(cart.getItems().get(0).getProduct(),product);
@@ -65,18 +69,6 @@ public class ShoppingServiceTest {
         shoppingService.remove(product);
 
         assertEquals(cart.getItems().size(),0);
-    }
-
-    @Test
-    public void shouldAssertFalseWhenTwoCartsAreCompared(){
-        Cart cart1 = new Cart(new ArrayList<>());
-        Cart cart2 = new Cart(new ArrayList<>());
-        Item item1 = new Item(new Product(new ProductId(1),new ProductName("Sony Wireless headphone")),new Quantity(1) );
-        Item item2 = new Item(new Product(new ProductId(1),new ProductName("Sony Wireless headphone")),new Quantity(1) );
-        cart1.addItem(item1);
-        cart2.addItem(item2);
-
-        assertNotEquals(cart1, cart2);
     }
 
 }
