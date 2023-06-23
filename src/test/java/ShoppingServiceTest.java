@@ -53,4 +53,6 @@ public class ShoppingServiceTest {
         assertTrue(cart.getProducts().containsKey(product));
         assertTrue(cart.getProducts().containsValue(2));
     }
+
+
 }

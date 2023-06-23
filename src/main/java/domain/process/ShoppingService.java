@@ -12,6 +12,6 @@ public class ShoppingService {
     }
 
     public void add(Product product,int qty) {
-        cart.addProduct(product,qty);
+        cart.addItem(product,qty);
     }
 }
