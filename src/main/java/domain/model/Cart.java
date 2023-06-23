@@ -12,8 +12,8 @@ public class Cart {
         this.items = items;
     }
 
-    public void addItem(Product product, int qty) {
-        Item item = new Item(product, new Quantity(qty));
+    public void addItem(Item item) {
+//        Item item = new Item(product, new Quantity(qty));
         items.add(item);
     }
 

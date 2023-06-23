@@ -12,9 +12,9 @@ public class ShoppingService {
         this.cart = cart;
     }
 
-    public void add(Product product,int qty) {
-        cart.addItem(product,qty);
-    }
+//    public void add(Product product,int qty) {
+//        cart.addItem(product,qty);
+//    }
 
     public void remove(Product product) {
         cart.removeItem(product);
