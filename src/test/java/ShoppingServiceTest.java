@@ -1,7 +1,4 @@
-import domain.model.Cart;
-import domain.model.Product;
-import domain.model.ProductId;
-import domain.model.ProductName;
+import domain.model.*;
 import domain.process.ShoppingService;
 import org.junit.jupiter.api.Test;
 
@@ -15,7 +12,7 @@ public class ShoppingServiceTest {
 
     @Test
     public void shouldAddApplePencilToCart(){
-        Cart cart = new Cart(new HashMap<>());
+        Cart cart = new Cart(new ArrayList<>());
         ShoppingService shoppingService = new ShoppingService(cart);
         ProductId productId = new ProductId(1);
         ProductName applePencil = new ProductName("ApplePencil");
@@ -23,12 +20,12 @@ public class ShoppingServiceTest {
 
         shoppingService.add(product,1);
 
-        assertEquals(cart.getProducts().size(),1);
+        assertEquals(cart.getItems().size(),1);
     }
 
     @Test
     public void shouldAddSonyWirelessHeadphonesToCart(){
-        Cart cart = new Cart(new HashMap<>());
+        Cart cart = new Cart(new ArrayList<>());
         ShoppingService shoppingService = new ShoppingService(cart);
         ProductId productId = new ProductId(1);
         ProductName applePencil = new ProductName("SonyWirelessHeadphones");
@@ -36,12 +33,12 @@ public class ShoppingServiceTest {
 
         shoppingService.add(product,1);
 
-        assertEquals(cart.getProducts().size(),1);
+        assertEquals(cart.getItems().size(),1);
     }
 
     @Test
     public void shouldAddTwoProductsToCart(){
-        Cart cart = new Cart(new HashMap<>());
+        Cart cart = new Cart(new ArrayList<>());
         ShoppingService shoppingService = new ShoppingService(cart);
         ProductId productId = new ProductId(1);
         ProductName applePencil = new ProductName("SonyWirelessHeadphones");
@@ -49,10 +46,26 @@ public class ShoppingServiceTest {
 
         shoppingService.add(product,2);
 
-        assertEquals(cart.getProducts().size(),1);
-        assertTrue(cart.getProducts().containsKey(product));
-        assertTrue(cart.getProducts().containsValue(2));
+        assertEquals(cart.getItems().size(),1);
+        assertEquals(cart.getItems().get(0).getProduct(),product);
     }
 
+    @Test
+    public void shouldRemoveProductFromCart(){
+        Cart cart = new Cart(new ArrayList<>());
+        ShoppingService shoppingService = new ShoppingService(cart);
+        ProductId productId = new ProductId(1);
+        ProductName productName = new ProductName("SonyWirelessHeadphones");
+        Product product = new Product(productId, productName);
+
+        shoppingService.add(product,2);
+
+        assertEquals(cart.getItems().size(),1);
+        assertEquals(cart.getItems().get(0).getProduct(),product);
+
+        shoppingService.remove(product);
+
+        assertEquals(cart.getItems().size(),0);
+    }
 
 }

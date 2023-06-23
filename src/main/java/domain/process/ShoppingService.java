@@ -2,6 +2,7 @@ package domain.process;
 
 import domain.model.Cart;
 import domain.model.Product;
+import domain.model.ProductName;
 
 public class ShoppingService {
 
@@ -13,5 +14,9 @@ public class ShoppingService {
 
     public void add(Product product,int qty) {
         cart.addItem(product,qty);
+    }
+
+    public void remove(Product product) {
+        cart.removeItem(product);
     }
 }
