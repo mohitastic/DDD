@@ -12,4 +12,15 @@ public class Product {
         this.price = price;
     }
 
+    public ProductId getId() {
+        return id;
+    }
+
+    public ProductName getName() {
+        return name;
+    }
+
+    public Price getPrice() {
+        return price;
+    }
 }

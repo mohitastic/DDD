@@ -12,4 +12,12 @@ public class Price {
         this.currency = currency;
         this.value = value;
     }
+
+    public Currency getCurrency() {
+        return currency;
+    }
+
+    public Integer getValue() {
+        return value;
+    }
 }

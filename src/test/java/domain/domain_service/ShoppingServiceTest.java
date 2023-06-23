@@ -1,5 +1,6 @@
+package domain.domain_service;
+
 import domain.model.*;
-import domain.process.ShoppingService;
 import org.junit.Test;
 
 import java.util.ArrayList;

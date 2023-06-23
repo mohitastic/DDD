@@ -1,4 +1,4 @@
-package domain.process;
+package domain.domain_service;
 
 import domain.model.Cart;
 import domain.model.Item;

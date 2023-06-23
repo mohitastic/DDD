@@ -1,6 +1,7 @@
 package domain.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Cart {
@@ -31,4 +32,7 @@ public class Cart {
         return removedItems.stream().findFirst().orElse(null);
     }
 
+    public void checkOut() {
+        items = Collections.emptyList();
+    }
 }

@@ -6,6 +6,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.Currency;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 
 
@@ -24,4 +25,19 @@ public class CartTest {
         assertFalse(cart1.equals(cart2));
     }
 
+    @Test
+    public void shouldEmptyItemListWhenCheckedOut() {
+        Cart cart = new Cart(new ArrayList<>());
+        Price price = new Price(Currency.getInstance("USD"), 20);
+        Item item1 = new Item(new Product(new ProductId(1),new ProductName("Sony Wireless headphone"), price),new Quantity(1) );
+        Item item2 = new Item(new Product(new ProductId(1),new ProductName("Sony Wireless headphone"), price),new Quantity(1) );
+        cart.addItem(item1);
+        cart.addItem(item2);
+
+        assertEquals(cart.getItems().size(), 2);
+
+        cart.checkOut();
+
+        assertEquals(cart.getItems().size(), 0);
+    }
 }
